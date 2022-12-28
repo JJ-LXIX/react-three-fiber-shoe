@@ -7,3 +7,30 @@
   margin: 0;
   padding: 0;
 }
+
+.card {
+  box-shadow: 15px 15px 30px #191919, -15px -15px 30px #292929;
+  /* border: 2px solid rgb(255, 255, 255); */
+  /* background: rgb(0, 0, 0); */
+  position: relative;
+}
+
+.color-picker {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 4rem;
+  height: 4rem;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.color-picker::-webkit-color-swatch {
+  border-radius: 1000px;
+  border: 2px solid #ffffff;
+}
+.color-picker::-moz-color-swatch {
+  border-radius: 1000px;
+  border: 2px solid #ffffff;
+}

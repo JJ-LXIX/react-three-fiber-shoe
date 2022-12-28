@@ -20,7 +20,7 @@ function Model(props: Props1) {
       <mesh
         geometry={nodes.shoe.geometry}
         material={materials.laces}
-        material-color={"blue"}
+        material-color={props.customColors.stripes}
       />
       <mesh
         geometry={nodes.shoe_1.geometry}
@@ -30,12 +30,12 @@ function Model(props: Props1) {
       <mesh
         geometry={nodes.shoe_2.geometry}
         material={materials.caps}
-        material-color={"blue"}
+        material-color={props.customColors.mesh}
       />
       <mesh
         geometry={nodes.shoe_3.geometry}
         material={materials.inner}
-        material-color={"blue"}
+        material-color={props.customColors.stripes}
       />
       <mesh
         geometry={nodes.shoe_4.geometry}
@@ -50,22 +50,26 @@ function Model(props: Props1) {
       <mesh
         geometry={nodes.shoe_6.geometry}
         material={materials.band}
-        material-color={"blue"}
+        material-color={props.customColors.mesh}
       />
       <mesh
         geometry={nodes.shoe_7.geometry}
         material={materials.patch}
-        material-color={"blue"}
+        material-color={props.customColors.stripes}
       />
     </group>
   );
 }
 
 const ProductCard = (props: Props) => {
+  const [mesh, setMesh] = useState("#fff");
+  const [stripes, setStripes] = useState("#fff");
+  const [sole, setSole] = useState("#fff");
+
   return (
-    <div className="min-h-screen  flex items-center justify-around bg-neutral-900 text-white">
-      <div className="min-h-[50vh] rounded-xl p-8 min-w-[35vw] bg-zinc-800">
-        <div className="product-canvas min-w-[35vw] h-[38vh] bg-zinc-600 shadow-xl rounded-none mb-5">
+    <div className="min-h-screen  flex items-center justify-around bg-[#212121] text-white ">
+      <div className="card min-h-[50vh] rounded-xl p-2 lg:p-10 min-w-[35vw] bg-[#212121] ">
+        <div className="card-info product-canvas  mb-2 rounded-lg bg-neutral-700 min-w-[35vw] h-[38vh]  ">
           <Canvas>
             <ambientLight />
             <spotLight
@@ -76,7 +80,7 @@ const ProductCard = (props: Props) => {
               castShadow
             />
             <Model
-              customColors={{ mesh: "pink", stripes: "blue", sole: "white" }}
+              customColors={{ mesh: mesh, stripes: stripes, sole: sole }}
             />
             <OrbitControls
               enablePan={true}
@@ -85,20 +89,58 @@ const ProductCard = (props: Props) => {
             />
           </Canvas>
         </div>
-        <h2>Color chooser</h2>
-        <div className="flex flex-row">
-          <div className="p-2">
-            <input type="color" id="mesh" name="mesh" value="#e66465" />
-            <label htmlFor="mesh">Main</label>
+        <h2 className="font-semibold text-sm md:text-base lg:text-lg">
+          Color Picker:
+        </h2>
+        <div className="flex flex-row  justify-around lg:px-32">
+          <div className="p-2 flex flex-col items-center ">
+            <input
+              type="color"
+              id="mesh"
+              name="mesh"
+              value={mesh}
+              onChange={(e) => setMesh(e.target.value)}
+              className="color-picker"
+            />
+            <label
+              htmlFor="mesh"
+              className="font-semibold text-md md:text-lg lg:text-2xl"
+            >
+              Primary
+            </label>
           </div>
 
-          <div className="p-2">
-            <input type="color" id="stripes" name="stripes" value="#f6b73c" />
-            <label htmlFor="stripes">Stripes</label>
+          <div className="p-2 flex flex-col items-center ">
+            <input
+              type="color"
+              id="stripes"
+              name="stripes"
+              value={stripes}
+              onChange={(e) => setStripes(e.target.value)}
+              className="color-picker"
+            />
+            <label
+              htmlFor="stripes"
+              className="font-semibold text-md md:text-lg lg:text-2xl"
+            >
+              Secondary
+            </label>
           </div>
-          <div className="p-2">
-            <input type="color" id="sole" name="sole" value="#f6b73c" />
-            <label htmlFor="sole">Soul</label>
+          <div className="p-2 flex flex-col items-center ">
+            <input
+              type="color"
+              id="sole"
+              name="sole"
+              value={sole}
+              onChange={(e) => setSole(e.target.value)}
+              className="color-picker"
+            />
+            <label
+              htmlFor="sole"
+              className="font-semibold text-md md:text-lg lg:text-2xl"
+            >
+              Sole
+            </label>
           </div>
         </div>
       </div>
