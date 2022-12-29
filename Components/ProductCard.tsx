@@ -67,80 +67,83 @@ const ProductCard = (props: Props) => {
   const [sole, setSole] = useState("#fff");
 
   return (
-    <div className="min-h-screen  flex items-center justify-around bg-[#212121] text-white ">
-      <div className="card min-h-[50vh] rounded-xl p-2 lg:p-10 min-w-[35vw] bg-[#212121] ">
-        <div className="card-info product-canvas  mb-2 rounded-lg bg-neutral-700 min-w-[35vw] h-[38vh]  ">
-          <Canvas>
-            <ambientLight />
-            <spotLight
-              intensity={0.9}
-              angle={0.1}
-              penumbra={1}
-              position={[10, 15, 10]}
-              castShadow
-            />
-            <Model
-              customColors={{ mesh: mesh, stripes: stripes, sole: sole }}
-            />
-            <OrbitControls
-              enablePan={true}
-              enableZoom={true}
-              enableRotate={true}
-            />
-          </Canvas>
-        </div>
-        <h2 className="font-semibold text-sm md:text-base lg:text-lg">
-          Color Picker:
-        </h2>
-        <div className="flex flex-row  justify-around lg:px-32">
-          <div className="p-2 flex flex-col items-center ">
-            <input
-              type="color"
-              id="mesh"
-              name="mesh"
-              value={mesh}
-              onChange={(e) => setMesh(e.target.value)}
-              className="color-picker"
-            />
-            <label
-              htmlFor="mesh"
-              className="font-semibold text-md md:text-lg lg:text-2xl"
-            >
-              Primary
-            </label>
+    <div className="h-screen bg-[#212121]">
+      <h1 className="font-semibold text-3xl md:text-4xl lg:text-6xl text-white text-center  pt-14 ">
+        [Interactive Color Picker]
+      </h1>
+      <div className="h-screen lg:h-[80vh] flex items-center justify-around bg-[#212121] text-white ">
+        <div className="card min-h-[50vh] rounded-xl p-2 lg:p-10 min-w-[35vw] bg-[#212121] ">
+          <div className="card-info product-canvas  mb-2 rounded-lg bg-neutral-700 min-w-[35vw] h-[38vh]  ">
+            <Canvas>
+              <ambientLight />
+              <spotLight
+                intensity={0.9}
+                angle={0.1}
+                penumbra={1}
+                position={[10, 15, 10]}
+                castShadow
+              />
+              <Model
+                customColors={{ mesh: mesh, stripes: stripes, sole: sole }}
+              />
+              <OrbitControls
+                enablePan={true}
+                enableZoom={true}
+                enableRotate={true}
+              />
+            </Canvas>
           </div>
 
-          <div className="p-2 flex flex-col items-center ">
-            <input
-              type="color"
-              id="stripes"
-              name="stripes"
-              value={stripes}
-              onChange={(e) => setStripes(e.target.value)}
-              className="color-picker"
-            />
-            <label
-              htmlFor="stripes"
-              className="font-semibold text-md md:text-lg lg:text-2xl"
-            >
-              Secondary
-            </label>
-          </div>
-          <div className="p-2 flex flex-col items-center ">
-            <input
-              type="color"
-              id="sole"
-              name="sole"
-              value={sole}
-              onChange={(e) => setSole(e.target.value)}
-              className="color-picker"
-            />
-            <label
-              htmlFor="sole"
-              className="font-semibold text-md md:text-lg lg:text-2xl"
-            >
-              Sole
-            </label>
+          <div className="flex flex-row  justify-around lg:px-32">
+            <div className="p-2 flex flex-col items-center ">
+              <input
+                type="color"
+                id="mesh"
+                name="mesh"
+                value={mesh}
+                onChange={(e) => setMesh(e.target.value)}
+                className="color-picker"
+              />
+              <label
+                htmlFor="mesh"
+                className="font-semibold text-md md:text-lg lg:text-2xl"
+              >
+                Primary
+              </label>
+            </div>
+
+            <div className="p-2 flex flex-col items-center ">
+              <input
+                type="color"
+                id="stripes"
+                name="stripes"
+                value={stripes}
+                onChange={(e) => setStripes(e.target.value)}
+                className="color-picker"
+              />
+              <label
+                htmlFor="stripes"
+                className="font-semibold text-md md:text-lg lg:text-2xl"
+              >
+                Secondary
+              </label>
+            </div>
+            <div className="p-2 flex flex-col items-center ">
+              <input
+                type="color"
+                id="sole"
+                name="sole"
+                value={sole}
+                onChange={(e) => setSole(e.target.value)}
+                className="color-picker"
+              />
+              <label
+                htmlFor="sole"
+                className="font-semibold text-md md:text-lg lg:text-2xl"
+              >
+                Sole
+              </label>
+            </div>
           </div>
         </div>
       </div>
